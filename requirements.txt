@@ -1,0 +1,2 @@
+-e hg+http://bb.secdev.org/scapy-com@cc06add6dbd9b470b6d2696507989574910df811#egg=scapy-dev
+wsgiref==0.1.2
