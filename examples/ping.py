@@ -16,7 +16,7 @@ def arp_ping(host):
     ans, unans = srp(Ether(dst="ff:ff:ff:ff:ff:ff")/ARP(pdst=host), timeout=2)
 
     # Answers can be reviewed with the following command:
-    ans.summary(lambda (s, r): r.sprintf("%Ether.src% %ARP.psrc%"))
+    ans.summary(lambda s, r: r.sprintf("%Ether.src% %ARP.psrc%"))
 
 
 def icmp_ping(host):
@@ -26,7 +26,7 @@ def icmp_ping(host):
     ans, unans = sr(IP(dst=host)/ICMP())
 
     # Information on live hosts can be collected with the following request:
-    ans.summary(lambda (s, r): r.sprintf("%IP.src% is alive"))
+    ans.summary(lambda s, r: r.sprintf("%IP.src% is alive"))
 
 
 def tcp_ping(host, port):
@@ -37,7 +37,7 @@ def tcp_ping(host, port):
     ans, unans = sr(IP(dst=host)/TCP(dport=port, flags="S"))
 
     # Any response to our probes will indicate a live host. We can collect results with the following command:
-    ans.summary(lambda(s, r): r.sprintf("%IP.src% is alive"))
+    ans.summary(lambda s, r: r.sprintf("%IP.src% is alive"))
 
 def udp_ping(host, port=0):
     ''' UDP Ping '''
@@ -47,7 +47,7 @@ def udp_ping(host, port=0):
     ans, unans = sr(IP(dst=host)/UDP(dport=port))
 
     # Once again, results can be collected with this command:
-    ans.summary(lambda(s, r): r.sprintf("%IP.src% is alive"))
+    ans.summary(lambda s, r: r.sprintf("%IP.src% is alive"))
 
 if __name__ == '__main__':
     # own variant
